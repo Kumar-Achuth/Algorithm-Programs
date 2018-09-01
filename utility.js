@@ -251,4 +251,104 @@ temperatureConversion : function(choice)
     }
 
     },
+    newtonsMethod : function(c)
+    {
+        if(c>=0)
+        {
+        var t = c;   
+        var epsilon = 1e-15;    // relative error tolerance
+        while (Math.abs(t - c/t) > epsilon*t)
+         {
+            t = (c/t + t) / 2.0;
+        }
+        console.log(t)
+    }
+     else 
+        {
+            console.log(' Please give a non negative number : ')
+        }
+    },
+    questionNumber : function(first ,number)
+    {
+        var prompt =require('prompt-sync')()
+        var n = Math.pow(2,number)
+        console.log('Think of a value between ' + first + 'and ' + n-1 )
+        var low = first;
+        var high = n-1;
+        if ((high - low) == 1) 
+        return low;
+        else
+        var mid = Math.floor(low + (high - low) / 2);
+        console.log("Is it less than  " , +mid)
+        var choice = prompt('Enter the choice in true or false : ')
+        if(Boolean.choice=='true')
+        return this.questionNumber(low,mid)
+        else
+        return this.questionNumber(mid,high)
+    },
+    vendingMachine : function(amount)
+    {
+        var count =0;
+        choice = 1;
+        switch(choice)
+        {
+            case 1 : if(amount/1000>=1)
+            {
+                    var result = Math.floor(amount/1000)
+                    console.log('Number of 1000 rs note are : ' +result)
+                    amount = amount -result*1000;
+                    count = count + result;
+        }
+        case 2 : if(amount/500>=1)
+        {
+                var result1 = Math.floor(amount/500)
+                console.log('Number of 500 rs note are : ' +result1)
+                amount = amount - result1*500;
+                count = count + result1;
+    }
+    case 3 : if(amount/100>=1)
+    {
+            var result2 = Math.floor(amount/100)
+            console.log('Number of 100 rs note are : ' +result2)
+            amount = amount - result2*100;
+            count = count + result2;
+}
+case 4 : if(amount/50>=1)
+{
+        var result3 = Math.floor(amount/50)
+        console.log('Number of 50 rs note are : ' +result3)
+        amount = amount - result3*50;
+        count = count + result3;
+}
+case 5: if(amount/10>=1)
+{
+        var result4 = Math.floor(amount/10)
+        console.log('Number of 10 rs note are : ' +result4)
+        amount = amount - result4*10;
+        count = count + result4;
+}
+case 6: if(amount/5>=1)
+{
+        var result5 = Math.floor(amount/5)
+        console.log('Number of 5 rs note are : ' +result5)
+        amount = amount - result5*5;
+        count = count + result5;
+}
+case 7 : if(amount/2>=1)
+{
+        var result7 = Math.floor(amount/2)
+        console.log('Number of 2 rs note are : ' +result7)
+        amount = amount - result7*2;
+        count = count + result7;
+}
+case 8 : if(amount/1>=1)
+{
+        var result8 = Math.floor(amount/1)
+        console.log('Number of 1 rs note are : ' +result8)
+        count = count + result8;
+}
+    }
+    count = parseInt(count)
+    console.log('Total notes are ' +count)
+    }
 }
