@@ -89,8 +89,11 @@ else
          }
          if(isPrime == 0 && Minimum1 !=0)
          {
-         if(Minimum1.toString().split('').reverse().join('')==Minimum1 && (Minimum1.toString().split('').sort().join('').trim()))
-         console.log(Minimum1)
+             console.log('The prime numbers are : ' +Minimum1)
+         if(Minimum1.toString().split('').reverse().join('')==Minimum1) // && (Minimum1.toString().split('').sort().join('').trim()))
+         console.log('The prime palindrome Numbers are : ' +Minimum1)
+         if((Minimum1.toString().split('').sort().join('').trim()))
+         console.log('The anagramic prime palindrome numbers are : '+Minimum1)
          }
          ++Minimum1
          }
@@ -112,7 +115,7 @@ else
         array[i]=prompt('Enter the elements : ');     // take input of elements from the user and store in the array
     }
     array.sort();
-    console.log(array); 
+   // console.log(array); 
     var low = 0;
     var high = size-1;
     var element = prompt('Enter the element to be searched : ')
@@ -161,5 +164,91 @@ else
             }
         }
         console.log('Sorted array is '+array);
+    },
+    insertionSort : function(size)
+    {
+var prompt = require('prompt-sync')()
+var array = new Array(size);
+var  i,d,swap;
+for (i=0;i<size; i++)
+{
+    array[i] = prompt('Enter the elements : ')
+}
+console.log(array)
+for(i=1; i<=size-1; i++)
+{
+    d=i;
+
+while(d > 0 && array[d-1] > array[d])
+{
+    swap = parseInt(array[d])
+    array[d] = parseInt(array[d-1])
+    array[d-1] = swap;
+    d--;
+}
+}
+console.log("Sorted list in ascending order : \n")
+    console.log(array);
+return 0;
+},
+binaryWords : function(array,word)
+{
+    array = array.sort();
+    console.log(array); 
+    var low = 0;
+    var check = 0;
+    var high = array.length-1;
+    while(low <=  high)
+    {
+        var midkey = Math.floor((low + high)/2);
+        if(word== array[midkey])
+        {
+            check = 1;
+            break;
+        }
+        else 
+        {
+            if(word > array[midkey])
+                low = midkey + 1;
+            else
+                high = midkey - 1;
+        }
+    }
+    if(check == 1)
+    console.log('The element was found at index ' + midkey  )
+    else
+    console.log("The element was not found ")
+    return 0;
+    
+},
+monthlyPayment : function(principal, year, rate)
+{
+    var payment;
+    var n = 12 * year;
+    var r = rate /(12*100);
+    var result = Math.pow((1+r),(-n))
+    payment = principal*r/(1-result)
+    console.log('The Monthy payment due is : ' + payment)
+},
+temperatureConversion : function(choice)
+{
+    var prompt = require('prompt-sync')()
+    if (choice == 1)
+    {
+        var degreeCelsius = prompt('Enter the temperature in celsius degree to convert into farernheit :')
+        var result1 =((degreeCelsius*(9/5))+32)
+        console.log('The Temperature value in farenheit is : ' +result1)
+    }
+    else if(choice == 2)
+    {
+        var farenheit = prompt('Enter the temperature in farenheit to convert into celsius : ')
+        var result2 = ((farenheit-32)*(5/9))
+        console.log('The temperature value in degree celsius is : '+result2)
+    }
+    else
+    {
+        console.log('Please enter the valid input')
+    }
+
     },
 }
