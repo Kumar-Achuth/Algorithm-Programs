@@ -24,6 +24,17 @@ else
             console.log('Please enter only string type ')
         }
     },
+    getcurrentTime : function()
+{
+    var currenttime = new Date();    // method to get the current date
+    var n = currenttime.getTime();   // method to get the current time in seconds
+    return n;
+},
+getelapsedTime : function(startTime, stopTime)
+{
+    var elapsed = (stopTime-startTime)/1000;        // calculation of the elapsed time 
+    return elapsed;                                 // return the value
+},
     /**
      * @description : program to find the prime numbers in between 0 and 1000 in the prescribed range 
      */
@@ -181,8 +192,8 @@ for(i=1; i<=size-1; i++)
 
 while(d > 0 && array[d-1] > array[d])
 {
-    swap = parseInt(array[d])
-    array[d] = parseInt(array[d-1])
+    swap = (array[d])
+    array[d] = (array[d-1])
     array[d-1] = swap;
     d--;
 }
@@ -196,7 +207,7 @@ binaryWords : function(array,word)
     array = array.sort();
     console.log(array); 
     var low = 0;
-    var check = 0;
+    var check = 0;word
     var high = array.length-1;
     while(low <=  high)
     {
@@ -275,6 +286,11 @@ temperatureConversion : function(choice)
         console.log('Think of a value between ' + first + 'and ' + n-1 )
         var low = first;
         var high = n-1;
+        question(low,high)
+    },
+        
+    question : function(low ,high)
+    {
         if ((high - low) == 1) 
         return low;
         else
@@ -282,9 +298,10 @@ temperatureConversion : function(choice)
         console.log("Is it less than  " , +mid)
         var choice = prompt('Enter the choice in true or false : ')
         if(Boolean.choice=='true')
-        return this.questionNumber(low,mid)
+        return this.question(low,mid)
         else
-        return this.questionNumber(mid,high)
+        return this.question(mid,high)
+        
     },
     vendingMachine : function(amount)
     {
@@ -350,5 +367,192 @@ case 8 : if(amount/1>=1)
     }
     count = parseInt(count)
     console.log('Total notes are ' +count)
-    }
+    },
+    mergeSort : function(size)
+    {
+        var prompt=require('prompt-sync')();
+        var array=new Array(size);
+            for(var i=0;i<size;i++)
+            {
+                array[i]=prompt("enter elements: ");
+                
+            }
+            console.log((array));
+           // console.log("before merge arr len "+arr.length);
+            this.merge((array));
+            //console.log("after merge arr len "+arr.length);
+            array.forEach(element =>
+                {
+            
+                    console.log(parseInt(element));
+                });
+    },  
+    merge : function(array)
+    {
+        if(array.length==1)
+        {
+            return; 
+        }
+        var m=Math.floor(array.length/2);
+        var a1=new Array(m);
+        var a2=new Array(array.length-m);
+        var i;
+        for(i=0;i<a1.length;i++)
+        {
+            a1[i]=parseInt(arr[i]);
+            
+        }
+        for(var j=0;j<a2.length;j++,i++)
+        {
+            a2[j]=parseInt(array[i]);
+            
+        }
+        this.merge(a1);
+        this.merge(a2);
+        this.merger(a1,a2,array);
+    },
+    merger : function(a,b,c)
+    {
+        var i=0,j=0,k=0;
+        while(i<a.length && j<b.length)
+        {
+            if(a[i]<b[j])
+            {
+                c[k]=parseInt(a[i]);
+                i++;
+                k++;
+            }
+            else
+            {
+                c[k]=parseInt(b[j]);
+                k++;
+                j++;
+            }
+        }
+        while(i<a.length)
+        {
+            c[k]=parseInt(a[i]);
+            k++;
+            i++;
+        }
+        while(j<b.length)
+        {
+            c[k]=parseInt(b[j]);
+            k++;
+            j++;
+        }
+    },
+    toBinary : function(number) 
+    {
+if (number == 0)
+{
+    console.log(0)
 }
+else{
+    var array =[],i;
+    for(i=0; number>0;i++ )
+    {
+        array[i] = Math.floor(number%2)
+        number = Math.floor(number/2)
+    }
+    console.log("\n Binary of given Number is ")
+    //for(i=array.length-1; i>=0; i--)
+    console.log(array.toString())
+    return 0
+}
+    },
+    swapNibbles : function(number)
+    {
+        var temp1, temp2;
+        var flag = 0;
+        temp1 = number & 0x0F
+        temp2 = number & 0xF0
+        temp1 = temp1 << 4
+        temp2 = temp2 >> 4
+        var number1= (temp1|temp2)
+        console.log(number1)
+       for (var i= number1; i>=0;i--)
+       {
+           if(number1==Math.pow(2,i))
+           {
+               flag = 1;
+               break;
+           }
+        }
+       if(flag ==1 )
+      console.log("Number is a power of  " +(i))
+      else
+     console.log('Not a power of 2')
+        },
+        calender : function(date,month,year)
+        {
+            var d,m,y,x;
+            y=year-Math.ceil(((14-month))/12)
+            x = y + Math.ceil((y/4)-y/100 +y/400)
+            m = month + 12 *Math.ceil((14-month)/12)-2
+            d= (date+x+31*Math.ceil((m/12)))%7
+
+            switch(m)
+            {
+                case 1 : console.log('January')
+                break;
+
+                case 2 : console.log('February')
+                break;
+            
+                case 3 : console.log('March')
+                break;
+
+                case 4 : console.log('April')
+                break;
+
+                case 5 : console.log('May')
+                break;
+
+                case 6 : console.log('June')
+                break;
+
+                case 7 : console.log('July')
+                break;
+
+                case 8 : console.log('August')
+                break;
+
+                case 9 : console.log('September')
+                break;
+
+                case 10 : console.log('October')
+                break;
+
+                case 11 : console.log('November')
+                break;
+
+                case 12 : console.log('December')
+                break;
+            }
+            switch(d)
+            {
+                case 0 : console.log("Sunday")
+                break;
+
+                case 1 : console.log('Monday')
+                break;
+
+                case 2 : console.log('Tuesday')
+                break;
+
+                case 3 : console.log('Wednesday')
+                break;
+
+                case 4 : console.log('Thursday')
+                break;
+
+                case 5 : console.log('Friday')
+                break;
+
+                case 6 : console.log('Saturday')
+                break;
+            }
+
+        },
+    }
