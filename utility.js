@@ -36,7 +36,9 @@ getelapsedTime : function(startTime, stopTime)
     return elapsed;                                 // return the value
 },
     /**
-     * @description : program to find the prime numbers in between 0 and 1000 in the prescribed range 
+     * @description : program to find the prime numbers in between 0 and 1000 in the prescribed range
+     * @param Minimum
+     * @param Maximum 
      */
  primeNumbers : function(Minimum,Maximum)
     {
@@ -78,13 +80,15 @@ getelapsedTime : function(startTime, stopTime)
     },
     /**
      * @description : Program to find out numbers which are prime , paindrome and anagram
+     * @param Minimum1
+     * @param Maximum1
      */
     primePalindrome : function(Minimum1,Maximum1)
     {
         if(Maximum1<Minimum1) // if the maximum < minimum, swap
         {
             var swap = Maximum1;
-            Maximum1 = Minimum1;
+            Maximum1 = Minimum1;      //  swapping to make the larger number as Maximum 
             Minimum1 = swap;
         }
         if(Minimum1 >=0 && Maximum1<=1000)   // range has to be in between 0 and 1000
@@ -106,8 +110,8 @@ getelapsedTime : function(startTime, stopTime)
              console.log('The prime numbers are : ' +Minimum1)
          if(Minimum1.toString().split('').reverse().join('')==Minimum1) // && (Minimum1.toString().split('').sort().join('').trim()))
          console.log('The prime palindrome Numbers are : ' +Minimum1)
-         if((Minimum1.toString().split('').sort().join('').trim()))
-         console.log('The anagramic prime palindrome numbers are : '+Minimum1)
+         if((Minimum1.toString().split('').sort().join('').trim())==Minimum1)
+         console.log('The anagramic prime numbers are : '+Minimum1)
          }
          ++Minimum1
          }
@@ -120,7 +124,8 @@ getelapsedTime : function(startTime, stopTime)
         
     },
     /**
-     * @description : To find a integer using binarySearch method 
+     * @description : To find a integer using binarySearch method
+     *  @param size
      */
     binarySearch : function(size)
     {
@@ -160,6 +165,7 @@ getelapsedTime : function(startTime, stopTime)
     },
 /**
  * @description : Reads in integers prints them in sorted order using Bubble Sort
+ * @param size
  */
     bubbleSort : function(size)
     {
@@ -187,6 +193,7 @@ getelapsedTime : function(startTime, stopTime)
     /**
      * @description : Reads in strings from standard input and prints them in sorted order.
 Uses insertion sort.
+@param size
      */
     insertionSort : function(size)
     {
@@ -217,6 +224,8 @@ return 0;
 /**
  * @description : Read in a list of words from File. Then prompt the user to enter a word to
 search the list. The program reports if the search word is found in the list.
+@param array
+@param word
  */
 binaryWords : function(array,word)
 {
@@ -228,7 +237,7 @@ binaryWords : function(array,word)
     while(low <=  high)  // run untill condition becomes fall
     {
         var midkey = Math.floor((low + high)/2);   //assign midkey
-        if(word== array[midkey])
+        if(word == array[midkey])
         {
             check = 1;
             break;
@@ -250,6 +259,9 @@ binaryWords : function(array,word)
 },
 /**
  * @description : To calculate the monthly payment due with respect to principal amount , year , rate of interest
+ * @param principal
+ * @param year
+ * @param rate 
  */
 monthlyPayment : function(principal, year, rate)
 {
@@ -262,21 +274,22 @@ monthlyPayment : function(principal, year, rate)
 },
 /**
  * @description : To convert the degree from celsius to farenheit and vice versa.
+ * @param choice 
  */
 temperatureConversion : function(choice)
 {
     var prompt = require('prompt-sync')()
-    if (choice == 1)  // for celsius to farenheit conversion    
+    if (choice == 1)                          // for celsius to farenheit conversion    
     {
         var degreeCelsius = prompt('Enter the temperature in celsius degree to convert into farernheit :')
         var result1 =((degreeCelsius*(9/5))+32)   // formula to convert from celsius to farenheit 
-        console.log('The Temperature value in farenheit is : ' +result1)
+        console.log('The Temperature value in is : ' +result1+ " farenheit")
     }
-    else if(choice == 2)  // for farenheit to celius conversion 
+    else if(choice == 2)                        // for farenheit to celius conversion 
     {
         var farenheit = prompt('Enter the temperature in farenheit to convert into celsius : ')
         var result2 = ((farenheit-32)*(5/9))  // formula to convert from farenheit to celsius 
-        console.log('The temperature value in degree celsius is : '+result2)
+        console.log('The temperature value in degree celsius is : ' +result2+ ' degree celsius'   )
     }
     else
     {
@@ -285,7 +298,8 @@ temperatureConversion : function(choice)
 
     },
     /**
-     * @description : Program to calculate square root of a number using epsilon  
+     * @description : Program to calculate square root of a number using epsilon
+     * @param c   
      */
     newtonsMethod : function(c)
     {
@@ -295,7 +309,7 @@ temperatureConversion : function(choice)
         var epsilon = 1e-15;    // relative error tolerance
         while (Math.abs(t - c/t) > epsilon*t)
          {
-            t = (c/t + t) / 2.0;
+            t = (c/t + t) / 2.0;   // formula to calculate the square root of the number 
         }
         console.log(t)
     }
@@ -308,12 +322,13 @@ temperatureConversion : function(choice)
      * @description : takes a command­line argument N, asks you to think of a number
 between 0 and N­1, where N = 2^n, and always guesses the answer with n
 questions.
+@param number 
      */
     questionNumber : function(number)
     {
         var prompt =require('prompt-sync')()
         var n = Math.pow(2,number)    // calculate the power of the number with base as 2 
-        console.log('Think of a number between 0 and ' + n )
+        console.log('Think of a number between 0 and ' +n)
         var low = 0;  // assign vale to low and high
         var high = n;
         var secret = this.question(low,high)  // passing values and calling the function 
@@ -325,7 +340,7 @@ questions.
         if ((high - low) == 1) 
         return low;
         else
-        var mid =low + (high-low) / 2;
+        var mid =Math.floor(((low + high )/ 2));
         console.log("Is it less than  " , +mid)
         var choice = prompt('Enter the choice in true or false : ')
         if(choice ==='true')    // take input in boolean and check the condition 
@@ -346,6 +361,7 @@ questions.
 returned by Vending Machine. Write a Program to calculate the minimum number
 of Notes as well as the Notes to be returned by the Vending Machine as a
 Change
+@param amount 
  */
     vendingMachine : function(amount)
     {
@@ -412,14 +428,16 @@ case 8 : if(amount/1>=1) // if amount is > than 1 or equal to 1
     count = parseInt(count)
     console.log('Total notes are ' +count)   // Total number of notes are count which has the number of notes present
     },
+    /**
+     * @description : Merge sort program to perform sorting of the given user input 
+     */
     mergeSort : function(size)
     {
         var prompt=require('prompt-sync')();
         var array=new Array(size);
             for(var i=0;i<size;i++)
             {
-                array[i]=prompt("enter elements: ");
-                
+                array[i]=prompt("enter elements: "); 
             }
             console.log((array));
            // console.log("before merge arr len "+arr.length);
@@ -427,7 +445,7 @@ case 8 : if(amount/1>=1) // if amount is > than 1 or equal to 1
             //console.log("after merge arr len "+arr.length);
             array.forEach(element =>
                 {
-                    console.log(parseInt(element));
+                    console.log((element));
                 });
     },  
     merge : function(array)
@@ -442,13 +460,11 @@ case 8 : if(amount/1>=1) // if amount is > than 1 or equal to 1
         var i;
         for(i=0;i<a1.length;i++)
         {
-            a1[i]=parseInt(array[i]);
-            
+            a1[i]=(array[i]);  
         }
         for(var j=0;j<a2.length;j++,i++)
         {
-            a2[j]=parseInt(array[i]);
-            
+            a2[j]=(array[i]);
         }
         this.merge(a1);
         this.merge(a2);
@@ -461,30 +477,34 @@ case 8 : if(amount/1>=1) // if amount is > than 1 or equal to 1
         {
             if(a[i]<b[j])
             {
-                c[k]=parseInt(a[i]);
+                c[k]=(a[i]);
                 i++;
                 k++;
             }
             else
             {
-                c[k]=parseInt(b[j]);
+                c[k]=(b[j]);
                 k++;
                 j++;
             }
         }
         while(i<a.length)
         {
-            c[k]=parseInt(a[i]);
+            c[k]=(a[i]);
             k++;
             i++;
         }
         while(j<b.length)
         {
-            c[k]=parseInt(b[j]);
+            c[k]=(b[j]);
             k++;
             j++;
         }
     },
+    /**
+     * @description : To convert the given decimal number to binary value 
+     * @param number
+     */
     toBinary : function(number) 
     {
 if (number == 0)
@@ -494,7 +514,7 @@ if (number == 0)
 else{
     var array =[];
     var i =0;
-    var array1 = [0,0,0,0,0,0,0,0]
+   // var array1 = [0,0,0,0,0,0,0,0]
    while(number>0)
     {
         array[i++] = Math.floor(number%2)
@@ -505,21 +525,28 @@ else{
     {
     console.log(array[j])
     }
-    var arr =(array1|array)
-    console.log(arr)
+    // var arr =(array1|array)
+    console.log(array)
 }
     },
+    /**
+     * @description : Binary.java to read an integer as an Input, convert to Binary using toBinary
+function and perform the following functions.
+i. Swap nibbles and find the new number.
+ii. Find the resultant number is the number is a power of 2.
+@param number 
+     */
     swapNibbles : function(number)
     {
         var temp1, temp2;
         var flag = 0;
-        temp1 = number & 0x0F
-        temp2 = number & 0xF0
-        temp1 = temp1 << 4
-        temp2 = temp2 >> 4
-        var number1= (temp1|temp2)
+        temp1 = number & 0x0F                       // and the input with hexadecimal 0x0F
+        temp2 = number & 0xF0                        // and the input with hexadecimal 0xF0
+        temp1 = temp1 << 4                        // left shift with four bits 
+        temp2 = temp2 >> 4                       // right shift with 4 bits
+        var number1= (temp1|temp2)               // add both bits in binary to get the result 
         console.log(number1)
-       for (var i= number1; i>=0;i--)
+       for (var i= number1; i>=0;i--)         // loop to run the condition for checking the number is a power of 2 
        {
            if(number1==Math.pow(2,i))
            {
@@ -532,10 +559,18 @@ else{
       else
      console.log('Not a power of 2')
         },
+        /**
+         * @description : To guess the day of the week by taking user input as date , month and year 
+         * @param date 
+         * @param month
+         * @param year
+         */
         calender : function(date,month,year)
         {
-            var d,m,y,x;
-            var n=Math.floor((14-month)/12);
+           // if(!(year % 4 == 0 && year % 100 !== 0 || year % 400 == 0) && !((month == 2) && (date ==29)))
+            
+                var d,m,y,x;
+            var n=Math.floor((14-month)/12);    
             n=parseInt(n);
             y=year-n
             y=parseInt(y)
@@ -611,15 +646,18 @@ else{
                 case 6 : console.log('Saturday')
                 break;
             }
-
         },
+        /**
+         * @description : BubbleSort program for string inputs 
+         * @param size 
+         */
         bubbleSortString : function(size)
     {
         var prompt = require('prompt-sync')()
-        var array = new Array(size)
+        var array = new Array(size)       // new empty array creation 
         for (var i=0;i<size;i++)
         {
-            array[i]= prompt('Enter the String to be sorted : ')
+            array[i]= prompt('Enter the String to be sorted : ')   // taking input string from the user and storing 
         }
         console.log('Input array elements are '+array)
         for ( i=0; i<array.length-1; i++)
@@ -636,34 +674,38 @@ else{
         }
         console.log('Sorted array is '+array);
     },
+    /**
+     * @description : binary search program for string input 
+     * @param size 
+     */
     binarySearchString : function(size)
     {
         var prompt = require('prompt-sync')()
         var check =0; 
-        var array = new Array(size);
+        var array = new Array(size);                 // array creation for number of elements 
         for(var i = 0; i<size; i++)
     {
         array[i]=prompt('Enter the elements : ');     // take input of elements from the user and store in the array
     }
-    array.sort();
+    array.sort();                                         // sorted array 
    // console.log(array); 
-    var low = 0;
+    var low = 0;                                         // assigning high and low index 
     var high = size-1;
-    var element = prompt('Enter the element to be searched : ')
+    var element = prompt('Enter the element to be searched : ')   // asking for the element to be searched 
     while(low <=  high)
     {
-        var midkey = Math.floor((low + high)/2);
-        if(element== array[midkey])
+        var midkey = Math.floor((low + high)/2);  // calculation of midkey 
+        if(element== array[midkey])                 // if element is present at midkey 
         {
-            check = 1;
+            check = 1;                                // indicate element was found
             break;
         }
         else 
         {
-            if(element > array[midkey])
-                low = midkey + 1;
-            else
-                high = midkey - 1;
+            if(element > array[midkey])            // if element is greater than midkey  
+                low = midkey + 1;                      // reassign low 
+            else                                           // or 
+                high = midkey - 1;                   // reassign high
         }
     }
     if(check == 1)
@@ -674,15 +716,16 @@ else{
     },
     /**
      * @description : Insertion Sort method for String 
+     * @param size 
      */
     insertionSortString : function(size)
     {
 var prompt = require('prompt-sync')()
-var array = new Array(size);
+var array = new Array(size);     // creation of new empty array 
 var  i,d,swap;
 for (i=0;i<size; i++)
 {
-    array[i] = prompt('Enter the elements : ')
+    array[i] = prompt('Enter the elements : ')    // input elements storage 
 }
 console.log(array)
 for(i=1; i<=size-1; i++)
@@ -692,7 +735,7 @@ for(i=1; i<=size-1; i++)
 while(d > 0 && array[d-1] > array[d])
 {
     swap = (array[d])
-    array[d] = (array[d-1])
+    array[d] = (array[d-1])     // swapping two numbers if greater and running the loop untill d = 0
     array[d-1] = swap;
     d--;
 }
