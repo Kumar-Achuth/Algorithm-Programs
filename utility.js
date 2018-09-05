@@ -521,12 +521,9 @@ else{
         number = Math.floor(number/2)
     }
     console.log("\n Binary of given Number is ")
-    for(j=i-1; j>=0; j--)
-    {
-    console.log(array[j])
-    }
+    console.log(array.reverse())
+
     // var arr =(array1|array)
-    console.log(array)
 }
     },
     /**
@@ -538,17 +535,19 @@ ii. Find the resultant number is the number is a power of 2.
      */
     swapNibbles : function(number)
     {
+        this.toBinary(number)
         var temp1, temp2;
         var flag = 0;
         temp1 = number & 0x0F                       // and the input with hexadecimal 0x0F
         temp2 = number & 0xF0                        // and the input with hexadecimal 0xF0
         temp1 = temp1 << 4                        // left shift with four bits 
         temp2 = temp2 >> 4                       // right shift with 4 bits
-        var number1= (temp1|temp2)               // add both bits in binary to get the result 
-        console.log(number1)
-       for (var i= number1; i>=0;i--)         // loop to run the condition for checking the number is a power of 2 
+       console.log(temp1|temp2)               // add both bits in binary to get the result 
+        var result = temp1|temp2;
+        this.toBinary(result)
+       for (var i= result; i>=0;i--)         // loop to run the condition for checking the number is a power of 2 
        {
-           if(number1==Math.pow(2,i))
+           if(result==Math.pow(2,i))
            {
                flag = 1;
                break;
