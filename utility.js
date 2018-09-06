@@ -10,7 +10,7 @@ module.exports=
         {                       
             var str1 =string1.toLowerCase().split('').sort().join('').trim();  // convert to lower case,split,sort,join,trim 
 var str2 = string2.toLowerCase().split('').sort().join('').trim();    
-if(str1 == str2)   // compare both the strings after the execution and check if they are equal
+if(str1 == str2)       // compare both the strings after the execution and check if they are equal
 {
     console.log('The given string is an anagram ')
 }
@@ -138,13 +138,13 @@ getelapsedTime : function(startTime, stopTime)
     }
     array.sort();
    // console.log(array); 
-    var low = 0;  // assign low to 0
-    var high = size-1;   // 
+    var low = 0;                             // assign low to 0
+    var high = size-1;    
     var element = prompt('Enter the element to be searched : ')   //Ask the number to be searched 
     while(low <=  high)
     {
         var midkey = Math.floor((low + high)/2);  // assign midkey with the formula
-        if(element== array[midkey])  // if element is present 
+        if(element== array[midkey])               // if element is present 
         {
             check = 1;
             break;   // come out of the loop
@@ -211,8 +211,8 @@ for(i=1; i<=size-1; i++)
 
 while(d > 0 && array[d-1] > array[d])   // checking for the condition 
 {
-    swap = (array[d])
-    array[d] = (array[d-1])   //swapping two numbers 
+    swap = parseInt(array[d])
+    array[d] = parseInt(array[d-1])   //swapping two numbers 
     array[d-1] = swap;
     d--;
 }
@@ -460,11 +460,11 @@ case 8 : if(amount/1>=1) // if amount is > than 1 or equal to 1
         var i;
         for(i=0;i<a1.length;i++)
         {
-            a1[i]=(array[i]);  
+            a1[i]=parseInt((array[i]));  
         }
         for(var j=0;j<a2.length;j++,i++)
         {
-            a2[j]=(array[i]);
+            a2[j]=parseInt((array[i]));
         }
         this.merge(a1);
         this.merge(a2);
@@ -477,20 +477,20 @@ case 8 : if(amount/1>=1) // if amount is > than 1 or equal to 1
         {
             if(a[i]<b[j])
             {
-                c[k]=(a[i]);
+                c[k]=(parseInt(a[i]));
                 i++;
                 k++;
             }
             else
             {
-                c[k]=(b[j]);
+                c[k]=parseInt((b[j]));
                 k++;
                 j++;
             }
         }
         while(i<a.length)
         {
-            c[k]=(a[i]);
+            c[k]=parseInt((a[i]));
             k++;
             i++;
         }
@@ -514,7 +514,6 @@ if (number == 0)
 else{
     var array =[];
     var i =0;
-   // var array1 = [0,0,0,0,0,0,0,0]
    while(number>0)
     {
         array[i++] = Math.floor(number%2)
@@ -536,14 +535,14 @@ ii. Find the resultant number is the number is a power of 2.
     swapNibbles : function(number)
     {
         this.toBinary(number)
-        var temp1, temp2;
+        var nibble1, nibble2;
         var flag = 0;
-        temp1 = number & 0x0F                       // and the input with hexadecimal 0x0F
-        temp2 = number & 0xF0                        // and the input with hexadecimal 0xF0
-        temp1 = temp1 << 4                        // left shift with four bits 
-        temp2 = temp2 >> 4                       // right shift with 4 bits
-       console.log(temp1|temp2)               // add both bits in binary to get the result 
-        var result = temp1|temp2;
+        nibble1 = number & 0x0F                       // and the input with hexadecimal 0x0F
+        nibble2 = number & 0xF0                        // and the input with hexadecimal 0xF0
+        nibble1 = nibble1 << 4                        // left shift with four bits 
+        nibble2 = nibble2 >> 4                       // right shift with 4 bits
+       console.log(nibble1|nibble2)               // add both bits in binary to get the result 
+        var result = nibble1|nibble2;
         this.toBinary(result)
        for (var i= result; i>=0;i--)         // loop to run the condition for checking the number is a power of 2 
        {

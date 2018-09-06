@@ -1,5 +1,8 @@
 var prompt = require('prompt-sync')()
 var utility = require('/home/bridgeit/Documents/kumar/algorithmPrograms/utility/utility.js')
+/**
+ * @description: to create a method for the following operations and find elapsed time after each function
+ */
 function searchSort()
 {
     console.log('1 : Enter 1 for BinarySerach method  for integer execution ')
